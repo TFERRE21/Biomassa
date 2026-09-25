@@ -169,7 +169,7 @@ body.dark{--ink:#edf5f0;--muted:#a9bbb1;--line:#294238;--soft:#0d2118;background
 <script>
 const TRACK_API='https://biomassa-admin.vps11710.panel.icontainer.work/api/track';
 function track(type,payload={}){try{return fetch(TRACK_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type,...payload}),keepalive:true,mode:'cors'}).catch(()=>{});}catch(e){return Promise.resolve();}}
-if(!sessionStorage.getItem('biomassa-visit-registered')){sessionStorage.setItem('biomassa-visit-registered','1');track('visit',{ref:document.referrer||''});}
+if(!sessionStorage.getItem('biomassa-visit-registered-v2')){sessionStorage.setItem('biomassa-visit-registered-v2','1');track('visit',{ref:document.referrer||''});}
 document.getElementById('leadForm').addEventListener('submit',function(e){
 e.preventDefault();
 const d=new FormData(this),n='5562994972915';
