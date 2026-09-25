@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#183d2a"/><stop offset="1" stop-color="#0b2117"/></linearGradient><linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f7c76a"/><stop offset="1" stop-color="#d97706"/></linearGradient></defs>
+<rect width="1400" height="800" fill="url(#sky)"/><circle cx="1120" cy="170" r="105" fill="url(#sun)" opacity=".95"/>
+<path d="M0 540L260 430l190 95 230-170 210 115 220-135 290 120v345H0z" fill="#10281b"/>
+<g fill="#22261f" stroke="#6b5134" stroke-width="8"><ellipse cx="180" cy="650" rx="155" ry="48"/><ellipse cx="360" cy="600" rx="170" ry="52"/><ellipse cx="570" cy="670" rx="175" ry="52"/></g>
+<g stroke="#8a633d" stroke-width="9" opacity=".9"><path d="M55 625l230 65M200 590l250 72M420 620l270 76M470 665l250 60"/></g>
+<g fill="#c7c7bf"><rect x="820" y="300" width="120" height="280" rx="8"/><rect x="965" y="240" width="150" height="340" rx="8"/><rect x="1140" y="330" width="105" height="250" rx="8"/></g>
+<g fill="#70756f"><rect x="850" y="340" width="60" height="190"/><rect x="1000" y="280" width="80" height="250"/><rect x="1165" y="365" width="55" height="165"/></g>
+<g fill="#ece7d5"><path d="M860 260h40l-8-100h-24z"/><path d="M1008 200h60l-10-145h-40z"/><path d="M1168 290h50l-8-115h-34z"/></g>
+<g fill="#b9c0b9" opacity=".55"><ellipse cx="1028" cy="42" rx="55" ry="20"/><ellipse cx="1048" cy="25" rx="70" ry="26"/><ellipse cx="1188" cy="140" rx="50" ry="18"/></g>
+<path d="M690 570h120l70 85H620z" fill="#d5d1c6"/><rect x="735" y="505" width="150" height="65" rx="12" fill="#e9e6dc"/><circle cx="770" cy="600" r="25" fill="#313a33"/><circle cx="840" cy="600" r="25" fill="#313a33"/>
+<text x="70" y="105" fill="#d9f99d" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="7">BIOMASSA INDUSTRIAL</text>
+<text x="70" y="155" fill="white" font-family="Arial, sans-serif" font-size="48" font-weight="700">Lenha de eucalipto para caldeiras</text>
+</svg>
