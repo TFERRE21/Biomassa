@@ -138,11 +138,43 @@ body.dark .stat{background:linear-gradient(145deg,#10231b,#0c1c15);border-color:
 <footer class="footer"><div><strong>BIOMASSA DF/GO</strong><small>Lenha de eucalipto e biomassa para aplicações industriais.</small></div><div class="footer-right">Distrito Federal • Goiás<br>Atendimento comercial</div></footer>
 
 <script>
-document.getElementById('leadForm').addEventListener('submit',function(e){
-e.preventDefault();
-const d=new FormData(this),n='5562994972915';
-const m='Olá! Quero solicitar uma cotação de biomassa.\n\n🏢 EMPRESA\n'+d.get('empresa')+'\n\n👤 CONTATO\n'+d.get('nome')+'\n📱 Telefone: '+d.get('telefone')+'\n📧 E-mail: '+(d.get('email')||'Não informado')+'\n\n🏭 OPERAÇÃO\nSegmento: '+d.get('segmento')+'\nConsumo estimado: '+d.get('consumo')+' m³/dia\n\n💬 Necessidade\n'+(d.get('mensagem')||'Não informado');
-window.open('https://wa.me/'+n+'?text='+encodeURIComponent(m),'_blank');
+const TRACK_API='https://biomassa-admin.vps11710.panel.icontainer.work/api/track';
+
+function track(type,payload={}){
+  try{
+    return fetch(TRACK_API,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({type,...payload}),
+      keepalive:true,
+      mode:'cors'
+    }).catch(()=>{});
+  }catch(e){ return Promise.resolve(); }
+}
+
+if(!sessionStorage.getItem('biomassa-visit-registered')){
+  sessionStorage.setItem('biomassa-visit-registered','1');
+  track('visit',{ref:document.referrer||''});
+}
+
+document.getElementById('leadForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const d=new FormData(this),n='5562994972915';
+  const lead={
+    empresa:d.get('empresa')||'',
+    nome:d.get('nome')||'',
+    telefone:d.get('telefone')||'',
+    email:d.get('email')||'',
+    produto:d.get('produto')||'',
+    segmento:d.get('segmento')||'',
+    consumo:d.get('consumo')||'',
+    mensagem:d.get('mensagem')||'',
+    ref:document.referrer||''
+  };
+  track('lead',lead);
+  track('whatsapp',{source:'lead_form'});
+  const m='Olá! Quero solicitar uma cotação de biomassa.\n\n🏢 EMPRESA\n'+lead.empresa+'\n\n👤 CONTATO\n'+lead.nome+'\n📱 Telefone: '+lead.telefone+'\n📧 E-mail: '+(lead.email||'Não informado')+'\n\n🏭 OPERAÇÃO\nSegmento: '+lead.segmento+'\nConsumo estimado: '+lead.consumo+' m³/dia\n\n💬 Necessidade\n'+(lead.mensagem||'Não informado');
+  window.open('https://wa.me/'+n+'?text='+encodeURIComponent(m),'_blank');
 });
 </script>
 <script>
