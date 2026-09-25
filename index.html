@@ -21,9 +21,9 @@ body.dark input,body.dark select,body.dark textarea{background:#0b1b14;color:#ed
 body.dark .applications,body.dark .cta{background:#0d2118}
 body.dark .app{background:#10231b;border-color:#294238}
 body.dark .app p,body.dark .section-head p,body.dark .about p,body.dark .cta p{color:#a9b9b1}
-.theme-toggle{border:1px solid #dce5e0;background:#fff;color:#173126;border-radius:999px;padding:10px 13px;font:inherit;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.admin-link{border:1px solid #dce5e0;background:#f7faf8;color:#173126;border-radius:999px;padding:10px 13px;font-size:12px;font-weight:800;display:inline-flex;align-items:center;gap:6px}.admin-link:hover{background:#edf5f0}.theme-toggle{border:1px solid #dce5e0;background:#fff;color:#173126;border-radius:999px;padding:10px 13px;font:inherit;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .theme-toggle:hover{background:#f3f7f4}
-body.dark .theme-toggle{background:#142b20;color:#e7f2ec;border-color:#365448}
+body.dark .admin-link{background:#142b20;color:#e7f2ec;border-color:#365448}body.dark .theme-toggle{background:#142b20;color:#e7f2ec;border-color:#365448}
 .stats{padding:62px 6%;background:#fff}
 .stats-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}
 .stats-head h2{font-size:34px;letter-spacing:-1.2px;margin:0}
@@ -35,7 +35,7 @@ body.dark .theme-toggle{background:#142b20;color:#e7f2ec;border-color:#365448}
 .stat small{display:block;margin-top:8px;color:var(--muted);font-size:11px;line-height:1.45}
 body.dark .stats{background:#08150f}
 body.dark .stat{background:linear-gradient(145deg,#10231b,#0c1c15);border-color:#294238}
-@media(max-width:1050px){.theme-toggle span{display:none}.stats-head{display:block}.stats-head p{margin-top:10px}.stat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:1050px){.admin-link{padding:8px 10px}.theme-toggle span{display:none}.stats-head{display:block}.stats-head p{margin-top:10px}.stat-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.theme-toggle{padding:8px 10px}.stats{padding:48px 5%}.stat-grid{grid-template-columns:1fr}.stat strong{font-size:34px}}
 </style>
 </head>
@@ -44,7 +44,7 @@ body.dark .stat{background:linear-gradient(145deg,#10231b,#0c1c15);border-color:
 <header class="header">
 <a class="brand" href="#inicio"><span class="logo">🌿</span><span><strong>BIOMASSA DF/GO</strong><small>BIOMASSA PARA A INDÚSTRIA</small></span></a>
 <nav class="nav"><a href="#produtos">Produtos</a><a href="#aplicacoes">Aplicações</a><a href="#empresa">A empresa</a><a href="#regiao">Atendimento</a><a href="#processo">Como funciona</a></nav>
-<button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema">☀️ <span>Modo claro</span></button><a class="btn" href="#contato">Solicitar cotação</a>
+<a class="admin-link" href="https://biomassa-admin.vps11710.panel.icontainer.work/" target="_blank" rel="noopener">🔐 Painel</a><button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema">☀️ <span>Modo claro</span></button><a class="btn" href="#contato">Solicitar cotação</a>
 </header>
 
 <main>
