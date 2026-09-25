@@ -1,1 +1,156 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Painel | Biomassa DF/GO</title><script src="https://cdn.jsdelivr.net/npm/chart.js"></script><style>:root{--g:#075b3a;--lime:#9bdd28;--bg:#f3f6f4;--card:#fff;--text:#13251d;--muted:#6d7a74}*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}header{height:72px;background:#08261a;color:#fff;padding:0 5%;display:flex;align-items:center;justify-content:space-between}header strong{font-size:18px}button{border:0;border-radius:9px;padding:12px 16px;background:var(--g);color:#fff;font-weight:800;cursor:pointer}.login{min-height:100vh;display:grid;place-items:center;padding:20px}.box{background:var(--card);padding:34px;border-radius:18px;box-shadow:0 20px 60px #0002;width:min(420px,100%)}input{width:100%;padding:13px;margin:7px 0;border:1px solid #d9e2dd;border-radius:8px}.box button{width:100%;margin-top:10px}.err{color:#b42318;font-size:12px}.dash{display:none}.wrap{padding:30px 5%;max-width:1400px;margin:auto}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:var(--card);border:1px solid #e1e8e4;border-radius:15px;padding:20px}.card small{color:var(--muted)}.card b{display:block;font-size:31px;margin-top:8px;color:var(--g)}.grid{display:grid;grid-template-columns:2fr 1fr;gap:15px;margin-top:15px}.panel{background:var(--card);border:1px solid #e1e8e4;border-radius:15px;padding:20px}.panel h3{margin-top:0}.leads{overflow:auto}.leads table{width:100%;border-collapse:collapse;font-size:12px}.leads td,.leads th{text-align:left;padding:10px;border-bottom:1px solid #e5ebe7}.hidden{display:none}@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}@media(max-width:560px){.cards{grid-template-columns:1fr}}</style></head><body><div id="login" class="login"><div class="box"><h1>BIOMASSA DF/GO</h1><p>Painel administrativo</p><input id="email" type="email" placeholder="E-mail"><input id="password" type="password" placeholder="Senha"><button onclick="login()">Entrar no painel</button><p id="err" class="err"></p></div></div><div id="dash" class="dash"><header><strong>BIOMASSA DF/GO · Painel</strong><button onclick="logout()">Sair</button></header><div class="wrap"><h1>Visão geral</h1><p style="color:#6d7a74">Acompanhamento de tráfego e geração de contatos.</p><div class="cards"><div class="card">Visitantes<b id="v">0</b><small>total registrado</small></div><div class="card">Cliques WhatsApp<b id="c">0</b><small>total registrado</small></div><div class="card">Solicitações<b id="l">0</b><small>formulários enviados</small></div><div class="card">Conversão<b id="cv">0%</b><small>visitas → solicitação</small></div></div><div class="grid"><div class="panel"><h3>Últimos 30 dias</h3><canvas id="chart"></canvas></div><div class="panel"><h3>Produtos procurados</h3><canvas id="products"></canvas></div></div><div class="panel leads" style="margin-top:15px"><h3>Últimas solicitações</h3><table><thead><tr><th>Data</th><th>Empresa</th><th>Contato</th><th>Produto</th><th>Segmento</th><th>Consumo</th></tr></thead><tbody id="rows"></tbody></table></div></div></div><script>async function login(){const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:document.getElementById('email').value,password:document.getElementById('password').value})});if(r.ok){document.getElementById('login').style.display='none';document.getElementById('dash').style.display='block';load()}else document.getElementById('err').textContent='E-mail ou senha inválidos.'}let chart,prodChart;async function load(){const r=await fetch('/api/stats');if(r.status===401)return;const d=await r.json();document.getElementById('v').textContent=d.totals.visits;document.getElementById('c').textContent=d.totals.clicks;document.getElementById('l').textContent=d.totals.leads;document.getElementById('cv').textContent=d.totals.visits?Math.round(d.totals.leads/d.totals.visits*100)+'%':'0%';const labels=Object.keys(d.daily),vals=Object.values(d.daily);if(chart)chart.destroy();chart=new Chart(document.getElementById('chart'),{type:'line',data:{labels,datasets:[{label:'Visitantes',data:vals.map(x=>x.visits),tension:.3},{label:'WhatsApp',data:vals.map(x=>x.clicks),tension:.3},{label:'Leads',data:vals.map(x=>x.leads),tension:.3}]},options:{responsive:true}});if(prodChart)prodChart.destroy();prodChart=new Chart(document.getElementById('products'),{type:'doughnut',data:{labels:Object.keys(d.products),datasets:[{data:Object.values(d.products)}]},options:{responsive:true}});document.getElementById('rows').innerHTML=d.leads.map(x=>'<tr><td>'+new Date(x.at).toLocaleString('pt-BR')+'</td><td>'+esc(x.empresa)+'</td><td>'+esc(x.nome)+'</td><td>'+esc(x.produto)+'</td><td>'+esc(x.segmento)+'</td><td>'+esc(x.consumo)+'</td></tr>').join('')}function esc(x){return String(x||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}async function logout(){await fetch('/api/logout');location.reload()}</script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel | Biomassa DF/GO</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--green:#087348;--green2:#0b5f3d;--dark:#071b13;--bg:#f4f7f5;--card:#fff;--text:#12251c;--muted:#718078;--line:#e2e9e5;--soft:#edf6f1;--danger:#b42318;--shadow:0 10px 35px rgba(12,38,26,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,input{font:inherit}button{border:0;cursor:pointer}.hidden{display:none!important}
+.topbar{height:70px;background:linear-gradient(110deg,#061b12,#0b3a27);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:10;box-shadow:0 3px 20px #0002}
+.brand{display:flex;align-items:center;gap:12px}.brand-icon{width:40px;height:40px;border-radius:12px;background:#9bdd28;color:#07341f;display:grid;place-items:center;font-size:21px}.brand strong{display:block;font-size:17px}.brand small{display:block;color:#b8d2c5;font-size:11px;margin-top:2px}
+.top-actions{display:flex;align-items:center;gap:10px}.status{font-size:12px;color:#c7ead9;display:flex;gap:7px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:#72e36d;box-shadow:0 0 0 4px #72e36d22}.btn{padding:10px 14px;border-radius:9px;font-weight:800}.btn-outline{background:#ffffff12;color:#fff;border:1px solid #ffffff25}.btn-green{background:var(--green);color:#fff}.btn-light{background:#eef5f1;color:var(--green2)}
+.layout{max-width:1500px;margin:auto;padding:28px 32px 50px}.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:22px}.hero h1{margin:0 0 6px;font-size:30px}.hero p{margin:0;color:var(--muted)}.hero-actions{display:flex;gap:9px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:19px;box-shadow:var(--shadow);position:relative;overflow:hidden}.card:after{content:"";position:absolute;right:-24px;top:-24px;width:80px;height:80px;border-radius:50%;background:var(--soft)}.card-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;font-weight:800}.card-icon{font-size:18px;position:relative;z-index:1}.card b{display:block;font-size:32px;line-height:1.1;margin:14px 0 6px;color:var(--green2)}.card small{color:var(--muted)}.trend{font-size:11px;color:var(--green);font-weight:800}
+.kpi-note{margin-top:25px;color:var(--muted);font-size:12px}
+.grid-main{display:grid;grid-template-columns:2fr 1fr;gap:15px;margin-top:15px}.grid-secondary{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:16px}.panel h2{font-size:17px;margin:0}.panel-sub{font-size:12px;color:var(--muted);margin-top:5px}.chart-wrap{height:300px;position:relative}.chart-wrap.small{height:270px}
+.filters{display:flex;gap:8px;align-items:center}.filters select{border:1px solid var(--line);background:#fff;padding:9px 11px;border-radius:8px;color:var(--text)}
+.table-wrap{overflow:auto}.leads table{width:100%;border-collapse:collapse;font-size:12px;min-width:820px}.leads th{text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em;background:#f8faf9}.leads td,.leads th{padding:12px 11px;border-bottom:1px solid var(--line)}.leads tr:hover td{background:#fbfdfc}.lead-name{font-weight:800}.lead-company{color:var(--muted);margin-top:2px}.tag{display:inline-flex;padding:5px 8px;border-radius:999px;background:var(--soft);color:var(--green2);font-weight:800;font-size:11px;white-space:nowrap}.action-link{display:inline-block;padding:6px 9px;border-radius:7px;background:#eef7f2;color:var(--green2);font-weight:800;text-decoration:none}.empty{text-align:center;color:var(--muted);padding:35px!important}
+.login{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at top right,#d9f0e4,transparent 35%),var(--bg)}.login-box{width:min(430px,100%);background:#fff;border:1px solid var(--line);border-radius:22px;padding:35px;box-shadow:0 25px 80px #123b2920}.login-brand{display:flex;align-items:center;gap:12px;margin-bottom:25px}.login-brand .brand-icon{width:46px;height:46px}.login h1{margin:0;font-size:25px}.login p{color:var(--muted);margin:5px 0 25px}.field{margin-bottom:12px}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:6px}.field input{width:100%;padding:13px;border:1px solid #d7e1dc;border-radius:9px;outline:none}.field input:focus{border-color:var(--green);box-shadow:0 0 0 3px #08734818}.login .btn{width:100%;padding:13px;margin-top:4px}.err{color:var(--danger);font-size:12px;min-height:18px}.login-foot{text-align:center;font-size:11px;color:var(--muted);margin-top:20px}
+@media(max-width:1050px){.cards{grid-template-columns:repeat(2,1fr)}.grid-main,.grid-secondary{grid-template-columns:1fr}}
+@media(max-width:650px){.topbar{padding:0 16px}.status{display:none}.layout{padding:20px 14px 40px}.hero{display:block}.hero h1{font-size:25px}.hero-actions{margin-top:15px}.cards{grid-template-columns:1fr}.card b{font-size:28px}.grid-secondary{grid-template-columns:1fr}.top-actions .btn-outline{display:none}}
+</style>
+</head>
+<body>
+
+<div id="login" class="login">
+  <div class="login-box">
+    <div class="login-brand"><div class="brand-icon">🌿</div><div><h1>BIOMASSA DF/GO</h1><small>Painel comercial</small></div></div>
+    <p>Entre para acompanhar visitas, oportunidades e solicitações comerciais.</p>
+    <div class="field"><label>E-mail</label><input id="email" type="email" autocomplete="username" placeholder="seu e-mail"></div>
+    <div class="field"><label>Senha</label><input id="password" type="password" autocomplete="current-password" placeholder="Sua senha" onkeydown="if(event.key==='Enter')login()"></div>
+    <button class="btn btn-green" onclick="login()">Entrar no painel</button>
+    <p id="err" class="err"></p>
+    <div class="login-foot">Acesso restrito • Biomassa DF/GO</div>
+  </div>
+</div>
+
+<div id="dash" class="hidden">
+  <header class="topbar">
+    <div class="brand"><div class="brand-icon">🌿</div><div><strong>BIOMASSA DF/GO</strong><small>Central comercial e analytics</small></div></div>
+    <div class="top-actions"><span class="status"><i class="dot"></i> Sistema online</span><button class="btn btn-outline" onclick="openSite()">🌐 Site</button><button class="btn btn-outline" onclick="logout()">Sair</button></div>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <div><h1>Visão geral</h1><p>Dados comerciais e comportamento dos visitantes do site.</p></div>
+      <div class="hero-actions"><button class="btn btn-light" onclick="load()">↻ Atualizar dados</button></div>
+    </section>
+
+    <section class="cards">
+      <div class="card"><div class="card-head"><span>Visitas</span><span class="card-icon">👁️</span></div><b id="v">0</b><small><span id="v30">0</span> nos últimos 30 dias</small></div>
+      <div class="card"><div class="card-head"><span>WhatsApp</span><span class="card-icon">📱</span></div><b id="c">0</b><small><span id="c30">0</span> nos últimos 30 dias</small></div>
+      <div class="card"><div class="card-head"><span>Solicitações</span><span class="card-icon">📋</span></div><b id="l">0</b><small><span id="l30">0</span> nos últimos 30 dias</small></div>
+      <div class="card"><div class="card-head"><span>Conversão</span><span class="card-icon">📈</span></div><b id="cv">0%</b><small>visitas → solicitação · 30 dias</small></div>
+    </section>
+
+    <div class="kpi-note">Os números de WhatsApp representam interações originadas no site. Conversas efetivamente concluídas no WhatsApp não são contabilizadas pelo site.</div>
+
+    <section class="grid-main">
+      <div class="panel">
+        <div class="panel-head"><div><h2>Desempenho dos últimos 30 dias</h2><div class="panel-sub">Visitas, cliques no WhatsApp e solicitações por dia</div></div></div>
+        <div class="chart-wrap"><canvas id="chart"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><div><h2>Produtos procurados</h2><div class="panel-sub">Distribuição das solicitações</div></div></div>
+        <div class="chart-wrap small"><canvas id="products"></canvas></div>
+      </div>
+    </section>
+
+    <section class="grid-secondary">
+      <div class="panel">
+        <div class="panel-head"><div><h2>Segmentos</h2><div class="panel-sub">Indústrias que solicitaram contato</div></div></div>
+        <div class="chart-wrap small"><canvas id="segments"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><div><h2>Resumo comercial</h2><div class="panel-sub">Indicadores do período</div></div></div>
+        <div style="display:grid;gap:13px">
+          <div style="display:flex;justify-content:space-between;padding:14px;background:#f7faf8;border-radius:10px"><span>Visitas → WhatsApp</span><strong id="waRate">0%</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:14px;background:#f7faf8;border-radius:10px"><span>Visitas → Solicitação</span><strong id="leadRate">0%</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:14px;background:#f7faf8;border-radius:10px"><span>Produto mais procurado</span><strong id="topProduct">—</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:14px;background:#f7faf8;border-radius:10px"><span>Segmento mais ativo</span><strong id="topSegment">—</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel leads" style="margin-top:15px">
+      <div class="panel-head">
+        <div><h2>Últimas solicitações</h2><div class="panel-sub">Leads recebidos nos últimos 30 dias</div></div>
+        <div class="filters"><button class="btn btn-light" onclick="load()">↻ Atualizar</button></div>
+      </div>
+      <div class="table-wrap">
+        <table><thead><tr><th>Data</th><th>Empresa / contato</th><th>Telefone</th><th>Produto</th><th>Segmento</th><th>Consumo</th><th>Ação</th></tr></thead><tbody id="rows"></tbody></table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+let chart,prodChart,segChart;
+
+async function login(){
+  const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;
+  document.getElementById('err').textContent='';
+  try{
+    const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
+    if(!r.ok){document.getElementById('err').textContent='E-mail ou senha inválidos.';return}
+    document.getElementById('login').classList.add('hidden');document.getElementById('dash').classList.remove('hidden');load();
+  }catch(e){document.getElementById('err').textContent='Não foi possível conectar ao servidor.'}
+}
+
+async function load(){
+  try{
+    const r=await fetch('/api/stats');
+    if(r.status===401){document.getElementById('dash').classList.add('hidden');document.getElementById('login').classList.remove('hidden');return}
+    const d=await r.json();
+    const t=d.totals,l=d.last30;
+    document.getElementById('v').textContent=t.visits;document.getElementById('c').textContent=t.clicks;document.getElementById('l').textContent=t.leads;
+    document.getElementById('v30').textContent=l.visits;document.getElementById('c30').textContent=l.clicks;document.getElementById('l30').textContent=l.leads;
+    const conv=l.visits?Math.round(l.leads/l.visits*100):0,wa=l.visits?Math.round(l.clicks/l.visits*100):0;
+    document.getElementById('cv').textContent=conv+'%';document.getElementById('waRate').textContent=wa+'%';document.getElementById('leadRate').textContent=conv+'%';
+
+    const labels=Object.keys(d.daily).map(x=>x.slice(8,10)+'/'+x.slice(5,7)),vals=Object.values(d.daily);
+    if(chart)chart.destroy();
+    chart=new Chart(document.getElementById('chart'),{type:'line',data:{labels,datasets:[
+      {label:'Visitas',data:vals.map(x=>x.visits),borderWidth:2,tension:.35,fill:false},
+      {label:'WhatsApp',data:vals.map(x=>x.clicks),borderWidth:2,tension:.35,fill:false},
+      {label:'Solicitações',data:vals.map(x=>x.leads),borderWidth:2,tension:.35,fill:false}
+    ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true,ticks:{precision:0}}}}});
+
+    const pLabels=Object.keys(d.products),pVals=Object.values(d.products);
+    if(prodChart)prodChart.destroy();
+    prodChart=new Chart(document.getElementById('products'),{type:'doughnut',data:{labels:pLabels.length?pLabels:['Sem dados'],datasets:[{data:pVals.length?pVals:[1]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}});
+    document.getElementById('topProduct').textContent=pLabels.length?pLabels[pVals.indexOf(Math.max(...pVals))]:'—';
+
+    const sLabels=Object.keys(d.segments),sVals=Object.values(d.segments);
+    if(segChart)segChart.destroy();
+    segChart=new Chart(document.getElementById('segments'),{type:'bar',data:{labels:sLabels.length?sLabels:['Sem dados'],datasets:[{label:'Solicitações',data:sVals.length?sVals:[0],borderRadius:7}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,ticks:{precision:0}}}}});
+    document.getElementById('topSegment').textContent=sLabels.length?sLabels[sVals.indexOf(Math.max(...sVals))]:'—';
+
+    const rows=document.getElementById('rows');
+    if(!d.leads.length){rows.innerHTML='<tr><td colspan="7" class="empty">Nenhuma solicitação registrada nos últimos 30 dias.</td></tr>'}
+    else rows.innerHTML=d.leads.map(x=>{
+      const phone=String(x.telefone||'').replace(/\D/g,'');
+      const wa=phone?('https://wa.me/'+(phone.startsWith('55')?phone:'55'+phone)):'#';
+      return '<tr><td>'+new Date(x.at).toLocaleString('pt-BR')+'</td><td><div class="lead-name">'+esc(x.nome)+'</div><div class="lead-company">'+esc(x.empresa)+'</div></td><td>'+esc(x.telefone)+'</td><td><span class="tag">'+esc(x.produto)+'</span></td><td>'+esc(x.segmento)+'</td><td>'+esc(x.consumo)+' m³/dia</td><td>'+(phone?'<a class="action-link" href="'+wa+'" target="_blank" rel="noopener">WhatsApp</a>':'—')+'</td></tr>'
+    }).join('');
+  }catch(e){console.error(e)}
+}
+function esc(x){return String(x||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+async function logout(){await fetch('/api/logout');location.reload()}
+function openSite(){window.open('https://biomassa.vps11710.panel.icontainer.work/','_blank')}
+</script>
+</body>
+</html>
