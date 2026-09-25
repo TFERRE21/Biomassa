@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://biomassaflorestal.com.br/sitemap.xml
