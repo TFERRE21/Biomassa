@@ -191,7 +191,7 @@ body.dark{--ink:#edf5f0;--muted:#a9bbb1;--line:#294238;--soft:#0d2118;background
 </footer>
 
 <script>
-const TRACK_API='https://biomassaflorestal.com.br/adminapi/track';
+const TRACK_API='/api/track';
 function track(type,payload={}){try{return fetch(TRACK_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type,...payload}),keepalive:true,mode:'cors'}).catch(()=>{});}catch(e){return Promise.resolve();}}
 if(!sessionStorage.getItem('biomassa-visit-registered-v2')){sessionStorage.setItem('biomassa-visit-registered-v2','1');track('visit',{ref:document.referrer||''});}
 document.getElementById('leadForm').addEventListener('submit',function(e){
