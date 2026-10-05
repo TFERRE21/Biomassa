@@ -86,8 +86,10 @@ const server=http.createServer(async(req,res)=>{
   if(p==='/api/track'&&req.method==='POST'){
     try{
       const b=await body(req),d=data(),now=new Date().toISOString();
-      if(b.type==='visit')d.visits.push({at:now,ref:b.ref||''});
-      if(b.type==='whatsapp')d.clicks.push({at:now});
+      const ip=(req.headers['x-forwarded-for']||req.headers['x-real-ip']||req.socket.remoteAddress||'').toString().split(',')[0].trim();
+      const ua=req.headers['user-agent']||'';
+      if(b.type==='visit')d.visits.push({at:now,ref:b.ref||'',page:b.page||'/',title:b.title||'',ip,userAgent:ua});
+      if(b.type==='whatsapp')d.clicks.push({at:now,source:b.source||'',ip,userAgent:ua});
       if(b.type==='lead')d.leads.push({...b,at:now});
       save(d);
       return json(res,{ok:true});
@@ -117,7 +119,7 @@ const server=http.createServer(async(req,res)=>{
     return json(res,{
       totals:{visits:d.visits.length,clicks:d.clicks.length,leads:d.leads.length},
       last30:{visits:visits.length,clicks:clicks.length,leads:leads.length},
-      daily,products,segments,leads:leads.slice(-50).reverse()
+      daily,products,segments,leads:leads.slice(-50).reverse(),visits:visits.slice(-100).reverse()
     });
   }
 
