@@ -1,5 +1,5 @@
 // Configure o número comercial antes de publicar.
-const WHATSAPP_NUMBER = '556199931160';
+const WHATSAPP_NUMBER = '5561999931160';
 
 document.getElementById('leadForm').addEventListener('submit', (event) => {
   event.preventDefault();
