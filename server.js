@@ -139,7 +139,7 @@ const server=http.createServer(async(req,res)=>{
   }
 
   // Backward-compatible admin route when the admin frontend exists in the deployment.
-  if(p==='/admin.html'){
+  if(p==='/admin'||p==='/admin.html'){
     const file=path.join(__dirname,'public','admin.html');
     if(fs.existsSync(file))return serveFile(res,file);
   }
