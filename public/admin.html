@@ -87,6 +87,15 @@ button,input{font:inherit}button{border:0;cursor:pointer}.hidden{display:none!im
 
     <section class="panel leads" style="margin-top:15px">
       <div class="panel-head">
+        <div><h2>Acessos recentes ao site</h2><div class="panel-sub">Quem acessou, quando acessou, página e origem do acesso</div></div>
+      </div>
+      <div class="table-wrap">
+        <table><thead><tr><th>Data / hora</th><th>IP</th><th>Página</th><th>Origem</th><th>Navegador / dispositivo</th></tr></thead><tbody id="visitsRows"></tbody></table>
+      </div>
+    </section>
+
+    <section class="panel leads" style="margin-top:15px">
+      <div class="panel-head">
         <div><h2>Últimas solicitações</h2><div class="panel-sub">Leads recebidos nos últimos 30 dias</div></div>
         <div class="filters"><button class="btn btn-light" onclick="load()">↻ Atualizar</button></div>
       </div>
@@ -138,6 +147,18 @@ async function load(){
     if(segChart)segChart.destroy();
     segChart=new Chart(document.getElementById('segments'),{type:'bar',data:{labels:sLabels.length?sLabels:['Sem dados'],datasets:[{label:'Solicitações',data:sVals.length?sVals:[0],borderRadius:7}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,ticks:{precision:0}}}}});
     document.getElementById('topSegment').textContent=sLabels.length?sLabels[sVals.indexOf(Math.max(...sVals))]:'—';
+
+    const vr=document.getElementById('visitsRows');
+    if(!d.visits || !d.visits.length){
+      vr.innerHTML='<tr><td colspan="5" class="empty">Nenhum acesso registrado nos últimos 30 dias.</td></tr>';
+    } else {
+      vr.innerHTML=d.visits.map(x=>{
+        const ua=String(x.userAgent||'');
+        const device=/Mobile|Android|iPhone|iPad/i.test(ua)?'📱 Celular/tablet':'💻 Computador';
+        const origin=x.ref?esc(x.ref):'Acesso direto';
+        return '<tr><td>'+new Date(x.at).toLocaleString('pt-BR')+'</td><td>'+esc(x.ip||'Não identificado')+'</td><td>'+esc(x.page||'/')+'</td><td>'+origin+'</td><td>'+device+' <small style="color:#718096">'+esc(ua.slice(0,90))+'</small></td></tr>';
+      }).join('');
+    }
 
     const rows=document.getElementById('rows');
     if(!d.leads.length){rows.innerHTML='<tr><td colspan="7" class="empty">Nenhuma solicitação registrada nos últimos 30 dias.</td></tr>'}
