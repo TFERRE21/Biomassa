@@ -1,5 +1,5 @@
-// Configure o número comercial antes de publicar.
-const WHATSAPP_NUMBER = '5561999311160';
+// WhatsApp comercial para recebimento de cotações.
+const WHATSAPP_NUMBER = '5561998036248';
 
 document.getElementById('leadForm').addEventListener('submit', (event) => {
   event.preventDefault();
