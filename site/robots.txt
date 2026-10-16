@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://SEU-DOMINIO.com.br/sitemap.xml
+
+Sitemap: https://biomassaflorestal.com.br/sitemap.xml
