@@ -1,4 +1,4 @@
-const http=require('http'),fs=require('fs'),path=require('path'),crypto=require('crypto');
+const http=require('http'),fs=require('fs'),path=require('path'),crypto=require('crypto'),{spawn}=require('child_process');
 
 const PORT=process.env.PORT||3000;
 const EMAIL=process.env.ADMIN_EMAIL||'';
@@ -162,4 +162,42 @@ const server=http.createServer(async(req,res)=>{
   res.end('Not found');
 });
 
+// Start the SEO research robot inside the deployed Node.js service.
+const SEO_ENABLED=process.env.SEO_ROBOT_ENABLED!=='false';
+const SEO_INTERVAL_MINUTES=Math.max(5,Number(process.env.SEO_INTERVAL_MINUTES)||30);
+let seoTimer=null;
+let seoChild=null;
+let seoStopping=false;
+function runSeoCycle(){
+  if(!SEO_ENABLED||seoStopping||seoChild)return;
+  const robot=path.join(__dirname,'scripts','seo-robot.js');
+  if(!fs.existsSync(robot)){
+    console.error('[seo-worker] robot script not found:',robot);
+    return;
+  }
+  console.log('[seo-worker] cycle starting');
+  seoChild=spawn(process.execPath,[robot],{
+    cwd:__dirname,
+    env:{...process.env,SEO_DATA_DIR:process.env.SEO_DATA_DIR||path.join(__dirname,'seo-data')},
+    stdio:['ignore','inherit','inherit']
+  });
+  seoChild.on('error',err=>console.error('[seo-worker] launch error:',err.message));
+  seoChild.on('exit',(code,signal)=>{
+    console.log('[seo-worker] cycle finished',JSON.stringify({code,signal,nextMinutes:SEO_INTERVAL_MINUTES}));
+    seoChild=null;
+  });
+}
+function stopSeoWorker(){
+  seoStopping=true;
+  if(seoTimer)clearInterval(seoTimer);
+  if(seoChild)seoChild.kill('SIGTERM');
+}
+if(SEO_ENABLED){
+  console.log('[seo-worker] persistent worker online; every '+SEO_INTERVAL_MINUTES+' minutes');
+  runSeoCycle();
+  seoTimer=setInterval(runSeoCycle,SEO_INTERVAL_MINUTES*60*1000);
+  if(typeof seoTimer.unref==='function')seoTimer.unref();
+  process.on('SIGTERM',stopSeoWorker);
+  process.on('SIGINT',stopSeoWorker);
+}
 server.listen(PORT,()=>console.log('Biomassa server on '+PORT));
