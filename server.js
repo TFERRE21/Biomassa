@@ -124,7 +124,7 @@ const server=http.createServer(async(req,res)=>{
   }
 
   // Serve crawler files and SEO guides at the public root, from the deployed static site.
-  if(p==='/sitemap.xml'||p==='/robots.txt'){
+  if(p==='/sitemap.xml'||p==='/robots.txt'||p==='/BingSiteAuth.xml'){
     return serveFile(res,path.join(__dirname,'site',p.slice(1)));
   }
 
