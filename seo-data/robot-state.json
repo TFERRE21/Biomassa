@@ -1,11 +1,11 @@
 {
-  "seedIndex": 0,
-  "totalRuns": 0,
-  "lastRunAt": null,
+  "seedIndex": 1,
+  "totalRuns": 1,
+  "lastRunAt": "2026-10-28T18:41:51.534Z",
   "lastError": null,
-  "lastSeed": null,
-  "keywordCount": 0,
+  "lastSeed": "lenha de eucalipto para caldeira industrial",
+  "keywordCount": 15,
   "newKeywordsThisRun": 0,
   "suggestionCount": 0,
-  "sitemapUrlCount": 9
+  "sitemapUrlCount": 7
 }

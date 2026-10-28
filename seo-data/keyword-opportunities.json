@@ -1,22 +1,38 @@
 {
   "site": "https://biomassaflorestal.com.br",
-  "updatedAt": "2026-10-28T12:36:58.754Z",
+  "updatedAt": "2026-10-28T18:41:51.534Z",
   "keywords": [
     {
-      "keyword": "lenha de eucalipto para caldeira industrial",
+      "keyword": "abastecimento de biomassa para industria",
       "firstSeenAt": "2026-10-28T12:36:58.754Z",
       "lastSeenAt": "2026-10-28T12:36:58.754Z",
       "occurrences": 1,
       "source": "initial-seed",
-      "topic": "lenha de eucalipto para caldeira industrial"
+      "topic": "abastecimento de biomassa para industria"
     },
     {
-      "keyword": "fornecedor de biomassa florestal",
+      "keyword": "armazenamento seguro de lenha industrial",
       "firstSeenAt": "2026-10-28T12:36:58.754Z",
       "lastSeenAt": "2026-10-28T12:36:58.754Z",
       "occurrences": 1,
       "source": "initial-seed",
-      "topic": "fornecedor de biomassa florestal"
+      "topic": "armazenamento seguro de lenha industrial"
+    },
+    {
+      "keyword": "biomassa industrial Distrito Federal",
+      "firstSeenAt": "2026-10-28T12:36:58.754Z",
+      "lastSeenAt": "2026-10-28T12:36:58.754Z",
+      "occurrences": 1,
+      "source": "initial-seed",
+      "topic": "biomassa industrial Distrito Federal"
+    },
+    {
+      "keyword": "biomassa para secagem de graos",
+      "firstSeenAt": "2026-10-28T12:36:58.754Z",
+      "lastSeenAt": "2026-10-28T12:36:58.754Z",
+      "occurrences": 1,
+      "source": "initial-seed",
+      "topic": "biomassa para secagem de graos"
     },
     {
       "keyword": "cavaco de madeira para caldeira",
@@ -27,12 +43,68 @@
       "topic": "cavaco de madeira para caldeira"
     },
     {
+      "keyword": "combustivel para caldeira industrial",
+      "firstSeenAt": "2026-10-28T12:36:58.754Z",
+      "lastSeenAt": "2026-10-28T12:36:58.754Z",
+      "occurrences": 1,
+      "source": "initial-seed",
+      "topic": "combustivel para caldeira industrial"
+    },
+    {
       "keyword": "consumo de lenha em caldeira industrial",
       "firstSeenAt": "2026-10-28T12:36:58.754Z",
       "lastSeenAt": "2026-10-28T12:36:58.754Z",
       "occurrences": 1,
       "source": "initial-seed",
       "topic": "consumo de lenha em caldeira industrial"
+    },
+    {
+      "keyword": "custo de biomassa florestal industrial",
+      "firstSeenAt": "2026-10-28T12:36:58.754Z",
+      "lastSeenAt": "2026-10-28T12:36:58.754Z",
+      "occurrences": 1,
+      "source": "initial-seed",
+      "topic": "custo de biomassa florestal industrial"
+    },
+    {
+      "keyword": "diferenca entre lenha e cavaco de madeira",
+      "firstSeenAt": "2026-10-28T12:36:58.754Z",
+      "lastSeenAt": "2026-10-28T12:36:58.754Z",
+      "occurrences": 1,
+      "source": "initial-seed",
+      "topic": "diferenca entre lenha e cavaco de madeira"
+    },
+    {
+      "keyword": "fornecedor de biomassa florestal",
+      "firstSeenAt": "2026-10-28T12:36:58.754Z",
+      "lastSeenAt": "2026-10-28T12:36:58.754Z",
+      "occurrences": 1,
+      "source": "initial-seed",
+      "topic": "fornecedor de biomassa florestal"
+    },
+    {
+      "keyword": "fornecedor de lenha de eucalipto Goias",
+      "firstSeenAt": "2026-10-28T12:36:58.754Z",
+      "lastSeenAt": "2026-10-28T12:36:58.754Z",
+      "occurrences": 1,
+      "source": "initial-seed",
+      "topic": "fornecedor de lenha de eucalipto Goias"
+    },
+    {
+      "keyword": "lenha de eucalipto para caldeira industrial",
+      "firstSeenAt": "2026-10-28T12:36:58.754Z",
+      "lastSeenAt": "2026-10-28T18:41:51.534Z",
+      "occurrences": 2,
+      "source": "initial-seed",
+      "topic": "lenha de eucalipto para caldeira industrial"
+    },
+    {
+      "keyword": "lenha para frigorifico e industria de alimentos",
+      "firstSeenAt": "2026-10-28T12:36:58.754Z",
+      "lastSeenAt": "2026-10-28T12:36:58.754Z",
+      "occurrences": 1,
+      "source": "initial-seed",
+      "topic": "lenha para frigorifico e industria de alimentos"
     },
     {
       "keyword": "poder calorifico da lenha de eucalipto",
@@ -49,78 +121,6 @@
       "occurrences": 1,
       "source": "initial-seed",
       "topic": "umidade da lenha para caldeira"
-    },
-    {
-      "keyword": "biomassa industrial Distrito Federal",
-      "firstSeenAt": "2026-10-28T12:36:58.754Z",
-      "lastSeenAt": "2026-10-28T12:36:58.754Z",
-      "occurrences": 1,
-      "source": "initial-seed",
-      "topic": "biomassa industrial Distrito Federal"
-    },
-    {
-      "keyword": "fornecedor de lenha de eucalipto Goias",
-      "firstSeenAt": "2026-10-28T12:36:58.754Z",
-      "lastSeenAt": "2026-10-28T12:36:58.754Z",
-      "occurrences": 1,
-      "source": "initial-seed",
-      "topic": "fornecedor de lenha de eucalipto Goias"
-    },
-    {
-      "keyword": "combustivel para caldeira industrial",
-      "firstSeenAt": "2026-10-28T12:36:58.754Z",
-      "lastSeenAt": "2026-10-28T12:36:58.754Z",
-      "occurrences": 1,
-      "source": "initial-seed",
-      "topic": "combustivel para caldeira industrial"
-    },
-    {
-      "keyword": "abastecimento de biomassa para industria",
-      "firstSeenAt": "2026-10-28T12:36:58.754Z",
-      "lastSeenAt": "2026-10-28T12:36:58.754Z",
-      "occurrences": 1,
-      "source": "initial-seed",
-      "topic": "abastecimento de biomassa para industria"
-    },
-    {
-      "keyword": "lenha para frigorifico e industria de alimentos",
-      "firstSeenAt": "2026-10-28T12:36:58.754Z",
-      "lastSeenAt": "2026-10-28T12:36:58.754Z",
-      "occurrences": 1,
-      "source": "initial-seed",
-      "topic": "lenha para frigorifico e industria de alimentos"
-    },
-    {
-      "keyword": "biomassa para secagem de graos",
-      "firstSeenAt": "2026-10-28T12:36:58.754Z",
-      "lastSeenAt": "2026-10-28T12:36:58.754Z",
-      "occurrences": 1,
-      "source": "initial-seed",
-      "topic": "biomassa para secagem de graos"
-    },
-    {
-      "keyword": "custo de biomassa florestal industrial",
-      "firstSeenAt": "2026-10-28T12:36:58.754Z",
-      "lastSeenAt": "2026-10-28T12:36:58.754Z",
-      "occurrences": 1,
-      "source": "initial-seed",
-      "topic": "custo de biomassa florestal industrial"
-    },
-    {
-      "keyword": "armazenamento seguro de lenha industrial",
-      "firstSeenAt": "2026-10-28T12:36:58.754Z",
-      "lastSeenAt": "2026-10-28T12:36:58.754Z",
-      "occurrences": 1,
-      "source": "initial-seed",
-      "topic": "armazenamento seguro de lenha industrial"
-    },
-    {
-      "keyword": "diferenca entre lenha e cavaco de madeira",
-      "firstSeenAt": "2026-10-28T12:36:58.754Z",
-      "lastSeenAt": "2026-10-28T12:36:58.754Z",
-      "occurrences": 1,
-      "source": "initial-seed",
-      "topic": "diferenca entre lenha e cavaco de madeira"
     }
   ]
 }
