@@ -1,0 +1,41 @@
+name: Biomassa SEO Robot
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: biomassa-seo-robot
+  cancel-in-progress: false
+
+jobs:
+  research-and-sitemap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run keyword research and update sitemap
+        run: node scripts/seo-robot.js
+      - name: Commit catalog and sitemap changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add seo-data/ site/sitemap.xml site/robots.txt
+          if git diff --cached --quiet; then
+            echo "No SEO data or sitemap changes to commit."
+          else
+            git commit -m "chore(seo): update Biomassa keyword catalog and sitemap"
+            git push origin HEAD:main
+          fi
