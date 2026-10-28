@@ -1,4 +1,4 @@
-const http=require('http'),fs=require('fs'),path=require('path'),crypto=require('crypto'),url=require('url');
+const http=require('http'),fs=require('fs'),path=require('path'),crypto=require('crypto');
 
 const PORT=process.env.PORT||3000;
 const EMAIL=process.env.ADMIN_EMAIL||'';
@@ -54,7 +54,7 @@ function serveFile(res,file){
 }
 
 const server=http.createServer(async(req,res)=>{
-  const u=url.parse(req.url,true),p=u.pathname;
+  const u=new URL(req.url,'http://localhost'),p=u.pathname;
 
   if(req.method==='OPTIONS'){
     res.writeHead(204,{
@@ -123,6 +123,20 @@ const server=http.createServer(async(req,res)=>{
     });
   }
 
+  // Serve crawler files and SEO guides at the public root, from the deployed static site.
+  if(p==='/sitemap.xml'||p==='/robots.txt'){
+    return serveFile(res,path.join(__dirname,'site',p.slice(1)));
+  }
+
+  if(p.startsWith('/guias/')){
+    const relative=p.slice(1);
+    const file=path.resolve(path.join(__dirname,'site',relative));
+    const root=path.resolve(path.join(__dirname,'site'));
+    if(file.startsWith(root+path.sep)) return serveFile(res,file);
+    res.writeHead(403);
+    return res.end('Forbidden');
+  }
+
   // Public website: serve the main repository site at the root.
   if(p==='/'||p==='/index.html'){
     return serveFile(res,path.join(__dirname,'index.html'));
@@ -131,11 +145,9 @@ const server=http.createServer(async(req,res)=>{
   // Keep the static-site version and its assets available for direct access.
   if(p.startsWith('/site/')){
     const relative=p.slice('/site/'.length);
-    const file=path.join(__dirname,'site',relative);
+    const file=path.resolve(path.join(__dirname,'site',relative));
     const root=path.resolve(path.join(__dirname,'site'));
-    if(path.resolve(file).startsWith(root+path.sep)||path.resolve(file)===root){
-      return serveFile(res,file);
-    }
+    if(file.startsWith(root+path.sep)) return serveFile(res,file);
     res.writeHead(403);
     return res.end('Forbidden');
   }
