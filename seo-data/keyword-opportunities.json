@@ -1,6 +1,6 @@
 {
   "site": "https://biomassaflorestal.com.br",
-  "updatedAt": "2026-10-28T22:58:04.096Z",
+  "updatedAt": "2026-10-29T02:17:57.104Z",
   "keywords": [
     {
       "keyword": "abastecimento de biomassa para industria",
@@ -37,9 +37,17 @@
     {
       "keyword": "cavaco de madeira para caldeira",
       "firstSeenAt": "2026-10-28T12:36:58.754Z",
-      "lastSeenAt": "2026-10-28T12:36:58.754Z",
-      "occurrences": 1,
+      "lastSeenAt": "2026-10-29T02:17:57.104Z",
+      "occurrences": 3,
       "source": "initial-seed",
+      "topic": "cavaco de madeira para caldeira"
+    },
+    {
+      "keyword": "cavaco de madeira para caldeira preço",
+      "firstSeenAt": "2026-10-29T02:17:57.104Z",
+      "lastSeenAt": "2026-10-29T02:17:57.104Z",
+      "occurrences": 1,
+      "source": "google-autocomplete",
       "topic": "cavaco de madeira para caldeira"
     },
     {
