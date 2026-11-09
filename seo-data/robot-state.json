@@ -1,11 +1,11 @@
 {
-  "seedIndex": 4,
-  "totalRuns": 49,
-  "lastRunAt": "2026-11-09T11:02:38.325Z",
+  "seedIndex": 5,
+  "totalRuns": 50,
+  "lastRunAt": "2026-11-09T21:34:51.067Z",
   "lastError": null,
-  "lastSeed": "consumo de lenha em caldeira industrial",
+  "lastSeed": "poder calorifico da lenha de eucalipto",
   "keywordCount": 16,
   "newKeywordsThisRun": 0,
-  "suggestionCount": 0,
-  "sitemapUrlCount": 7
+  "suggestionCount": 1,
+  "sitemapUrlCount": 11
 }
