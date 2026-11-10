@@ -137,6 +137,11 @@ const server=http.createServer(async(req,res)=>{
     return res.end('Forbidden');
   }
 
+  // Public legal and policy pages served from the repository root.
+  if(p==='/privacidade.html'||p==='/termos.html'){
+    return serveFile(res,path.join(__dirname,p.slice(1)));
+  }
+
   // Public website: serve the main repository site at the root.
   if(p==='/'||p==='/index.html'){
     return serveFile(res,path.join(__dirname,'index.html'));
