@@ -131,6 +131,31 @@ body.dark{--ink:#edf5f0;--muted:#a9bbb1;--line:#294238;--soft:#0d2118;background
   .company-data{padding:30px;grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
+
+/* Rodapé completo e responsivo */
+.footer{width:100%;max-width:100%;min-width:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.8fr) minmax(0,1.2fr);gap:28px;padding:38px 5%;background:#061c13;color:#d4e2da;overflow:hidden}
+.footer>div{min-width:0;max-width:100%}
+.footer strong{display:block;color:#fff;font-size:16px;line-height:1.4;overflow-wrap:anywhere}
+.footer h4{color:#c8ed8a;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin:0 0 12px}
+.footer p,.footer li,.footer a{font-size:12px;line-height:1.7;color:#c1d1c8;overflow-wrap:anywhere;word-break:normal}
+.footer p{margin:0 0 10px}
+.footer ul{list-style:none;margin:0 0 20px;padding:0}
+.footer li{margin:0 0 5px}
+.footer a{text-decoration:underline;text-underline-offset:3px}
+.footer .badge{display:inline-block;max-width:100%;white-space:normal;overflow-wrap:anywhere;font-size:11px;line-height:1.5;padding:8px 10px}
+.footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;margin-top:8px;font-size:10px;line-height:1.6;color:#9eb4a7;overflow-wrap:anywhere}
+@media(max-width:760px){
+ .footer{grid-template-columns:minmax(0,1fr);gap:24px;padding:30px 5%;width:100%;overflow:hidden}
+ .footer>div{width:100%;min-width:0}
+ .footer strong{font-size:15px}
+ .footer h4{font-size:11px;margin-bottom:8px}
+ .footer p,.footer li,.footer a{font-size:13px;line-height:1.65}
+ .footer ul{margin-bottom:14px}
+ .footer .badge{font-size:11px;white-space:normal}
+ .footer-bottom{grid-column:1;font-size:10px}
+}
+@media(min-width:761px) and (max-width:1100px){.footer{grid-template-columns:1fr 1fr;gap:24px}.footer-contact{grid-column:1/-1}}
+
 </style>
 <script type="application/ld+json">{
 "@context":"https://schema.org",
@@ -296,10 +321,28 @@ body.dark{--ink:#edf5f0;--muted:#a9bbb1;--line:#294238;--soft:#0d2118;background
 <a style="background:white;border:1px solid #dfe8e2;border-radius:10px;padding:16px;color:#075b3a;font-weight:800" href="/guias/como-calcular-consumo-de-lenha-da-caldeira.html">Como estimar o consumo da caldeira →</a>
 </div></div></section>
 
-<footer class="footer">
-<div><strong>BIOMASSA FLORESTAL</strong><p>Lenha de eucalipto e cavaco de madeira para aplicações industriais.<br>Atendimento principal no Distrito Federal, Entorno e regiões de Goiás a aproximadamente 150–200 km de Brasília. Unaí/MG; demais cidades mineiras sob consulta de rota e frete.</p><span class="badge">CNPJ 48.873.083/0001-50</span></div>
-<div><h4>Produtos</h4><small>Lenha de eucalipto<br>Cavaco de madeira<br>Biomassa para caldeiras<br>Fornecimento industrial<br><a href="/privacidade.html">Política de Privacidade</a><br><a href="/termos.html">Termos de Uso</a></small></div>
-<div class="right"><h4>Atendimento</h4><small>📍 DF • Entorno • Goiás próximo a Brasília • Unaí/MG<br>📱 <a href="https://wa.me/5561998036248">(61) 99803-6248</a><br><br>✉️ <a href="mailto:tjesusferreira19@gmail.com">tjesusferreira19@gmail.com</a><br>🔐 <a href="https://biomassaflorestal.com.br/admin" target="_blank" rel="noopener">Painel administrativo</a></small></div>
+<footer class="footer" id="rodape">
+  <div class="footer-company">
+    <strong>BIOMASSA FLORESTAL</strong>
+    <p>Fornecimento de lenha de eucalipto e cavaco de madeira para caldeiras, geração de vapor e processos térmicos industriais.</p>
+    <span class="badge">CNPJ: 48.873.083/0001-50</span>
+  </div>
+  <div class="footer-products">
+    <h4>Produtos e soluções</h4>
+    <ul><li>Lenha de eucalipto</li><li>Cavaco de madeira</li><li>Biomassa para caldeiras</li><li>Fornecimento industrial</li><li>Planejamento de entregas</li></ul>
+    <h4>Informações</h4>
+    <ul><li><a href="/privacidade.html">Política de Privacidade</a></li><li><a href="/termos.html">Termos de Uso</a></li></ul>
+  </div>
+  <div class="footer-contact">
+    <h4>Área de atendimento</h4>
+    <p>Distrito Federal e Entorno; municípios de Goiás em rotas próximas a Brasília (referência aproximada de 150–200 km); Unaí/MG.</p>
+    <p>João Pinheiro, Presidente Olegário e Grão Mogol/MG: atendimento somente após consulta de rota, volume e frete.</p>
+    <h4>Fale com a Biomassa Florestal</h4>
+    <p>WhatsApp: <a href="https://wa.me/5561998036248">(61) 99803-6248</a></p>
+    <p>E-mail: <a href="mailto:tjesusferreira19@gmail.com">tjesusferreira19@gmail.com</a></p>
+    <p><a href="https://biomassaflorestal.com.br/admin" target="_blank" rel="noopener">Acesso administrativo</a></p>
+  </div>
+  <div class="footer-bottom">© <span id="footerYear">2026</span> Biomassa Florestal. Todos os direitos reservados. Consulte disponibilidade, condições comerciais e frete para sua região.</div>
 </footer>
 <script>
 const TRACK_API='/api/track';
@@ -333,5 +376,6 @@ const themeToggle=document.getElementById('themeToggle');
 if(localStorage.getItem('biomassa-theme')==='dark'){document.body.classList.add('dark');themeToggle.textContent='☀️ Modo claro';}
 themeToggle.onclick=()=>{document.body.classList.toggle('dark');const dark=document.body.classList.contains('dark');localStorage.setItem('biomassa-theme',dark?'dark':'light');themeToggle.textContent=dark?'☀️ Modo claro':'🌙 Modo escuro';};
 </script>
+<script>document.getElementById('footerYear')?.replaceChildren(String(new Date().getFullYear()));</script>
 </body>
 </html>
