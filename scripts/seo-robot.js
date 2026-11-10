@@ -28,7 +28,18 @@ const SEEDS = [
   "biomassa para secagem de graos",
   "custo de biomassa florestal industrial",
   "armazenamento seguro de lenha industrial",
-  "diferenca entre lenha e cavaco de madeira"
+  "diferenca entre lenha e cavaco de madeira",
+  "biomassa para geracao de vapor industrial",
+  "caldeira industrial a biomassa",
+  "fornecedor de biomassa no Distrito Federal",
+  "fornecedor de lenha de eucalipto no DF",
+  "cavaco de madeira para caldeira industrial",
+  "lenha de eucalipto para industria",
+  "combustivel de biomassa para caldeira",
+  "geracao de vapor com biomassa",
+  "abastecimento de cavaco de madeira",
+  "umidade da biomassa para caldeira",
+  "fornecimento de biomassa no Entorno do DF"
 ];
 const MAX_SUGGESTIONS = 12;
 
