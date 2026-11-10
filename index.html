@@ -53,7 +53,8 @@
 .supplier{display:grid;grid-template-columns:1fr 1fr;gap:22px}.supplier .info-box{min-height:190px}.supplier .tag{display:inline-block;padding:6px 9px;border-radius:7px;background:#e7f3ec;color:var(--g);font-size:9px;font-weight:800;margin:3px 4px 3px 0}
 .cta{margin:0 4% 65px;padding:42px 5%;border-radius:18px;background:linear-gradient(120deg,#075b3a,#0a8150);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:25px}.cta h2{font-family:Montserrat;font-size:31px;margin:0 0 8px}.cta p{font-size:11px;color:#dceee5;margin:0}.cta a{background:var(--lime);color:#173020;padding:14px 20px;border-radius:9px;font-size:11px;font-weight:800;white-space:nowrap}
 .image-credits{padding:12px 4%;background:#04150e;color:#a8b9b0;font-size:9px;line-height:1.5}.image-credits p{margin:0}.image-credits a{color:#c8ed8a;text-decoration:underline}.footer{background:#061c13;color:#c9d8d0;padding:40px 4%;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px}.footer strong{color:#fff}.footer h4{font-size:10px;color:#fff;margin:0 0 10px;text-transform:uppercase;letter-spacing:1px}.footer p,.footer small{font-size:9px;line-height:1.7;color:#91a79d}.footer .right{text-align:right}.badge{display:inline-block;border:1px solid rgba(184,237,69,.3);padding:7px 10px;border-radius:7px;color:#fff;margin-top:8px;font-size:9px;font-weight:800}
-@media(max-width:1250px){.header{gap:12px;padding-left:2.4%;padding-right:2.4%}.brand strong{font-size:16px}.coverage{max-width:205px;min-width:165px}.coverage-cities{font-size:8px}.nav{gap:10px;font-size:9px}.admin,.theme{padding:9px 10px;font-size:9px}.quote{padding:10px 12px;font-size:10px}}\n@media(max-width:1100px){.nav{display:none}.coverage{margin-right:auto;max-width:330px}.hero{grid-template-columns:1fr 370px}.apps{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.process>div:first-child{grid-column:span 2}.company{grid-template-columns:1fr}.company-data{padding:30px}.why{grid-template-columns:1fr}.why-photo{min-height:280px}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric{border-bottom:1px solid var(--line)}}
+@media(max-width:1250px){.header{gap:12px;padding-left:2.4%;padding-right:2.4%}.brand strong{font-size:16px}.coverage{max-width:205px;min-width:165px}.coverage-cities{font-size:8px}.nav{gap:10px;font-size:9px}.admin,.theme{padding:9px 10px;font-size:9px}.quote{padding:10px 12px;font-size:10px}}
+@media(max-width:1100px){.nav{display:none}.coverage{margin-right:auto;max-width:330px}.hero{grid-template-columns:1fr 370px}.apps{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.process>div:first-child{grid-column:span 2}.company{grid-template-columns:1fr}.company-data{padding:30px}.why{grid-template-columns:1fr}.why-photo{min-height:280px}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric{border-bottom:1px solid var(--line)}}
 @media(max-width:760px){
 .top{display:none}
 .header{height:auto;min-height:0;padding:10px 4%;gap:9px;flex-wrap:wrap;position:sticky;top:0}
@@ -91,6 +92,46 @@
 .metric strong{font-size:18px}.trust{justify-content:flex-start}
 }
 body.dark{--ink:#edf5f0;--muted:#a9bbb1;--line:#294238;--soft:#0d2118;background:#08150f}body.dark .header,body.dark .metrics,body.dark .section:not(.alt),body.dark .trust{background:#0a1b14}body.dark .form,body.dark .card,body.dark .feature,body.dark .app,body.dark .info-box{background:#10231b;color:#edf5f0}body.dark input,body.dark select,body.dark textarea{background:#0b1b14;color:#edf5f0;border-color:#345247}body.dark .spec{background:#0b1b14}body.dark .title small,body.dark .section-head p,body.dark .app p,body.dark .info-box p,body.dark .feature span,.dark .step p{color:#a9bbb1}body.dark .supplier .tag{background:#173b2b;color:#b8ed45}
+
+/* Ajustes de enquadramento responsivo — desktop, tablet e celular */
+.company{width:100%;min-width:0;max-width:100%;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.company-copy,.company-data{min-width:0}
+.company-data{grid-template-columns:repeat(2,minmax(0,1fr))}
+.data{min-width:0;overflow-wrap:anywhere}
+.data b{overflow-wrap:anywhere;word-break:normal}
+@media (max-width:760px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .company{width:100%;max-width:100%;grid-template-columns:minmax(0,1fr);overflow:hidden}
+  .company-copy{padding:28px 22px}
+  .company-copy h2{font-size:clamp(27px,7.5vw,34px);line-height:1.08;letter-spacing:-.8px;overflow-wrap:break-word}
+  .company-copy p{font-size:13px;line-height:1.7;overflow-wrap:anywhere}
+  .company-data{width:100%;padding:20px;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .data{padding:13px;min-width:0}
+  .data small{font-size:8px;line-height:1.4}
+  .data b{font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+  .data.wide{grid-column:1/-1}
+  .section{min-width:0}
+  .section-head,.products-grid,.card,.card-body,.why,.supplier,.logistics{min-width:0;max-width:100%}
+  .nav{max-width:100%;overscroll-behavior-x:contain}
+  .photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gallery-wide{grid-column:span 2}
+}
+@media (max-width:420px){
+  .company-copy{padding:25px 18px}
+  .company-copy h2{font-size:29px}
+  .company-data{padding:16px;grid-template-columns:minmax(0,1fr)}
+  .data,.data.wide{grid-column:1}
+  .data b{font-size:12px}
+  .photo-gallery{grid-template-columns:minmax(0,1fr)}
+  .gallery-wide{grid-column:1}
+  .section{padding-left:4.5%;padding-right:4.5%}
+}
+@media (min-width:761px) and (max-width:1100px){
+  .company-copy{padding:32px}
+  .company-copy h2{font-size:32px}
+  .company-data{padding:30px;grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 </style>
 <script type="application/ld+json">{
 "@context":"https://schema.org",
@@ -272,7 +313,23 @@ e.preventDefault();
 const d=new FormData(this),n='5561998036248';
 const lead={empresa:d.get('empresa')||'',nome:d.get('nome')||'',telefone:d.get('telefone')||'',email:d.get('email')||'',produto:d.get('produto')||'',segmento:d.get('segmento')||'',consumo:d.get('consumo')||'',mensagem:d.get('mensagem')||'',ref:document.referrer||''};
 track('lead',lead);track('whatsapp',{source:'lead_form'});
-const m='Olá! Quero solicitar uma cotação de biomassa.\n\n🏢 EMPRESA\n'+lead.empresa+'\n\n👤 CONTATO\n'+lead.nome+'\n📱 Telefone: '+lead.telefone+'\n📧 E-mail: '+(lead.email||'Não informado')+'\n\n🏭 OPERAÇÃO\nProduto: '+lead.produto+'\nSegmento: '+lead.segmento+'\nConsumo estimado: '+lead.consumo+' m³/dia\n\n📍 Necessidade\n'+(lead.mensagem||'Não informado');
+const m='Olá! Quero solicitar uma cotação de biomassa.
+
+🏢 EMPRESA
+'+lead.empresa+'
+
+👤 CONTATO
+'+lead.nome+'
+📱 Telefone: '+lead.telefone+'
+📧 E-mail: '+(lead.email||'Não informado')+'
+
+🏭 OPERAÇÃO
+Produto: '+lead.produto+'
+Segmento: '+lead.segmento+'
+Consumo estimado: '+lead.consumo+' m³/dia
+
+📍 Necessidade
+'+(lead.mensagem||'Não informado');
 window.open('https://wa.me/'+n+'?text='+encodeURIComponent(m),'_blank');
 });
 const themeToggle=document.getElementById('themeToggle');
