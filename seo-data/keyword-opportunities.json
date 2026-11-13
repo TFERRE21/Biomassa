@@ -1,6 +1,6 @@
 {
   "site": "https://biomassaflorestal.com.br",
-  "updatedAt": "2026-11-13T01:22:12.033Z",
+  "updatedAt": "2026-11-13T08:34:23.407Z",
   "keywords": [
     {
       "keyword": "abastecimento de biomassa para industria",
@@ -41,6 +41,22 @@
       "occurrences": 5,
       "source": "initial-seed",
       "topic": "biomassa para secagem de graos"
+    },
+    {
+      "keyword": "caldeira industrial a biomassa",
+      "firstSeenAt": "2026-11-13T08:34:23.407Z",
+      "lastSeenAt": "2026-11-13T08:34:23.407Z",
+      "occurrences": 1,
+      "source": "seed",
+      "topic": "caldeira industrial a biomassa"
+    },
+    {
+      "keyword": "caldeira industrial biomassa",
+      "firstSeenAt": "2026-11-13T08:34:23.407Z",
+      "lastSeenAt": "2026-11-13T08:34:23.407Z",
+      "occurrences": 1,
+      "source": "google-autocomplete",
+      "topic": "caldeira industrial a biomassa"
     },
     {
       "keyword": "cavaco de madeira para caldeira",
