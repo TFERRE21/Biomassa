@@ -1,6 +1,6 @@
 {
   "site": "https://biomassaflorestal.com.br",
-  "updatedAt": "2026-11-12T20:17:44.821Z",
+  "updatedAt": "2026-11-13T01:22:12.033Z",
   "keywords": [
     {
       "keyword": "abastecimento de biomassa para industria",
@@ -25,6 +25,14 @@
       "occurrences": 5,
       "source": "initial-seed",
       "topic": "biomassa industrial Distrito Federal"
+    },
+    {
+      "keyword": "biomassa para geracao de vapor industrial",
+      "firstSeenAt": "2026-11-13T01:22:12.033Z",
+      "lastSeenAt": "2026-11-13T01:22:12.033Z",
+      "occurrences": 1,
+      "source": "seed",
+      "topic": "biomassa para geracao de vapor industrial"
     },
     {
       "keyword": "biomassa para secagem de graos",
