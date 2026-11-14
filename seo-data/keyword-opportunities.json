@@ -1,6 +1,6 @@
 {
   "site": "https://biomassaflorestal.com.br",
-  "updatedAt": "2026-11-14T02:56:34.081Z",
+  "updatedAt": "2026-11-14T10:00:26.418Z",
   "keywords": [
     {
       "keyword": "abastecimento de biomassa para industria",
@@ -153,6 +153,14 @@
       "occurrences": 5,
       "source": "initial-seed",
       "topic": "lenha de eucalipto para caldeira industrial"
+    },
+    {
+      "keyword": "lenha de eucalipto para industria",
+      "firstSeenAt": "2026-11-14T10:00:26.418Z",
+      "lastSeenAt": "2026-11-14T10:00:26.418Z",
+      "occurrences": 1,
+      "source": "seed",
+      "topic": "lenha de eucalipto para industria"
     },
     {
       "keyword": "lenha para frigorifico e industria de alimentos",
