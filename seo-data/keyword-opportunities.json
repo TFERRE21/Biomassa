@@ -1,6 +1,6 @@
 {
   "site": "https://biomassaflorestal.com.br",
-  "updatedAt": "2026-11-14T21:09:28.630Z",
+  "updatedAt": "2026-11-15T01:12:21.003Z",
   "keywords": [
     {
       "keyword": "abastecimento de biomassa para industria",
@@ -9,6 +9,14 @@
       "occurrences": 5,
       "source": "initial-seed",
       "topic": "abastecimento de biomassa para industria"
+    },
+    {
+      "keyword": "abastecimento de cavaco de madeira",
+      "firstSeenAt": "2026-11-15T01:12:21.003Z",
+      "lastSeenAt": "2026-11-15T01:12:21.003Z",
+      "occurrences": 1,
+      "source": "seed",
+      "topic": "abastecimento de cavaco de madeira"
     },
     {
       "keyword": "armazenamento seguro de lenha industrial",
