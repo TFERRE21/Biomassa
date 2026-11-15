@@ -1,11 +1,11 @@
 {
-  "seedIndex": 0,
-  "totalRuns": 71,
-  "lastRunAt": "2026-11-15T15:47:14.551Z",
+  "seedIndex": 1,
+  "totalRuns": 72,
+  "lastRunAt": "2026-11-15T20:52:29.251Z",
   "lastError": null,
-  "lastSeed": "fornecimento de biomassa no Entorno do DF",
+  "lastSeed": "lenha de eucalipto para caldeira industrial",
   "keywordCount": 28,
-  "newKeywordsThisRun": 1,
+  "newKeywordsThisRun": 0,
   "suggestionCount": 0,
   "sitemapUrlCount": 15
 }
