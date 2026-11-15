@@ -1,6 +1,6 @@
 {
   "site": "https://biomassaflorestal.com.br",
-  "updatedAt": "2026-11-15T01:12:21.003Z",
+  "updatedAt": "2026-11-15T08:15:07.067Z",
   "keywords": [
     {
       "keyword": "abastecimento de biomassa para industria",
@@ -201,6 +201,14 @@
       "occurrences": 9,
       "source": "initial-seed",
       "topic": "poder calorifico da lenha de eucalipto"
+    },
+    {
+      "keyword": "umidade da biomassa para caldeira",
+      "firstSeenAt": "2026-11-15T08:15:07.067Z",
+      "lastSeenAt": "2026-11-15T08:15:07.067Z",
+      "occurrences": 1,
+      "source": "seed",
+      "topic": "umidade da biomassa para caldeira"
     },
     {
       "keyword": "umidade da lenha para caldeira",
