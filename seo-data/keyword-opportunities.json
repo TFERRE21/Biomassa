@@ -1,6 +1,6 @@
 {
   "site": "https://biomassaflorestal.com.br",
-  "updatedAt": "2026-11-15T08:15:07.067Z",
+  "updatedAt": "2026-11-15T15:47:14.551Z",
   "keywords": [
     {
       "keyword": "abastecimento de biomassa para industria",
@@ -161,6 +161,14 @@
       "occurrences": 1,
       "source": "seed",
       "topic": "fornecedor de lenha de eucalipto no DF"
+    },
+    {
+      "keyword": "fornecimento de biomassa no Entorno do DF",
+      "firstSeenAt": "2026-11-15T15:47:14.551Z",
+      "lastSeenAt": "2026-11-15T15:47:14.551Z",
+      "occurrences": 1,
+      "source": "seed",
+      "topic": "fornecimento de biomassa no Entorno do DF"
     },
     {
       "keyword": "geracao de vapor com biomassa",
