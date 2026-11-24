@@ -1,11 +1,11 @@
 {
-  "seedIndex": 2,
-  "totalRuns": 99,
-  "lastRunAt": "2026-11-24T10:16:21.943Z",
+  "seedIndex": 3,
+  "totalRuns": 100,
+  "lastRunAt": "2026-11-24T20:46:28.299Z",
   "lastError": null,
-  "lastSeed": "fornecedor de biomassa florestal",
+  "lastSeed": "cavaco de madeira para caldeira",
   "keywordCount": 28,
   "newKeywordsThisRun": 0,
-  "suggestionCount": 0,
+  "suggestionCount": 2,
   "sitemapUrlCount": 15
 }
