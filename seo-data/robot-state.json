@@ -1,11 +1,11 @@
 {
-  "seedIndex": 3,
-  "totalRuns": 100,
-  "lastRunAt": "2026-11-24T20:46:28.299Z",
+  "seedIndex": 4,
+  "totalRuns": 101,
+  "lastRunAt": "2026-11-25T03:59:14.116Z",
   "lastError": null,
-  "lastSeed": "cavaco de madeira para caldeira",
+  "lastSeed": "consumo de lenha em caldeira industrial",
   "keywordCount": 28,
   "newKeywordsThisRun": 0,
-  "suggestionCount": 2,
+  "suggestionCount": 0,
   "sitemapUrlCount": 15
 }
